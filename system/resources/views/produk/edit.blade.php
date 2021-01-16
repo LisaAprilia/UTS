@@ -3,19 +3,33 @@
 @section ('content')
 
 <div class="Container">
-	<div class="row">
-		<div class="col-md-12 mt-5">
+	<div class="row mt-5">
+		<div class="col-md-3">
+			<div class="card">
+				<div class="card-body">
+					<div>
+						<img src="{{ url("public/$produk->foto") }}" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-9">
 			<div class="card">
 				<div class="card-header">
-					Tambah Data Produk
+					Ubah Data Produk
 				</div>
 				<div class="card-body">
-					<form action="{{url ('admin/produk', $produk->id)}}" method="post">
+					<form action="{{url ('admin/produk', $produk->id)}}" method="post" enctype="multipart/form-data">
 						@csrf
 						@method("PUT")
 					<div class="form-group">
 						<label for="" class="control-label">Nama</label>
 						<input type="text" class="form-control" name="nama" value="{{$produk->nama}}">
+					</div>
+					<div class="col-md-3">
+						<label for="" class="control-label">Foto</label>
+						<input type="file" class="form-control" name="foto" accept=".png" ></input>
 					</div>
 					<div class="row">
 						<div class="col-md-6">	

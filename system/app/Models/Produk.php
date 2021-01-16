@@ -2,25 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\Models\Traits\Attributes\ProdukAttributes;
+use App\Models\Traits\Relations\ProdukRelations;
 
 class Produk extends Model{
+
+	use ProdukAttributes, ProdukRelations;
+	
 	protected $table = 'produk';
 
-	protected $casts = [
+	protected $casts= [
 		'created_at' => 'datetime',
 		'updated_at' => 'datetime',
-		'berat' => 'decimal:2',
-		'harga' => 'decimal:2'
+		'berat' => 'decimal:2'
+ 
 	];
-
-	function seller(){
-		return $this->belongsTo(User:: class, 'id_user');
-	}
-
-	function getHargaStringAttribute(){
-		return "Rp. ".number_format($this->attributes['harga']);
-	}
-
-
+	
 }

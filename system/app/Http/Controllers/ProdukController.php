@@ -24,6 +24,8 @@ class ProdukController extends Controller {
 	}
 
 	function store(){
+
+	
 		$produk = new Produk;
 		$produk->id_user = request()->user()->id;
 		$produk->nama = request('nama');
@@ -33,7 +35,9 @@ class ProdukController extends Controller {
 		$produk->deskripsi = request('deskripsi');
 		$produk->save();
 
-		return redirect('admin/produk')->with('success', 'Data Berhasil Ditambahkan');
+		$produk->handleUploadFoto();
+
+		return redirect('produk')->with('success', 'Data Berhasil Ditambahkan');
 
 	}
 
@@ -45,6 +49,7 @@ class ProdukController extends Controller {
 
 	function edit(Produk $produk){
 		$data['produk'] = $produk;
+
 		return view('produk.edit', $data);
 		
 	}
@@ -57,15 +62,18 @@ class ProdukController extends Controller {
 		$produk->deskripsi = request('deskripsi');
 		$produk->save();
 
+		$produk->handleUploadFoto();
+
 		return redirect('produk')->with('warning', 'Data Berhasil Diedit');
 		
 	}
 
 	function destroy(Produk $produk){
+
+		$produk->handleDelete();
 		$produk->delete();
 
-
-		return redirect('produk')->with('danger', 'Data Berhasil Dihapus');
+		return redirect ('produk')->with('danger', 'Data Berhasil Dihapus');
 	}
 
 	function filter (){
