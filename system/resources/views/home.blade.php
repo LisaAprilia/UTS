@@ -144,7 +144,18 @@
             <h2 class="item-title"><a href="#">{{$produk->nama}}</a></h2>
             <strong class="item-price">RP. {{number_format($produk->harga)}}</strong>
           </div>
-           @endforeach
+         @endforeach
+         <div class="row">
+          <div class="col-md-12">
+            <div class="d-flex justify-content-center">
+              {!! $list_produk->links() !!}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+          </div>
           </div>
         </div>
       </div>

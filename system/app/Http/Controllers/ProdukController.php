@@ -7,12 +7,15 @@ class ProdukController extends Controller {
 
 	function homeIndex(){
 	$produk['list_produk'] = produk::all();
+	$produk['list_produk'] = Produk::Paginate(5);
 	return view ('home', $produk);
 
 	}
 	function index(){
 		$user = request()->user();
 		$produk['list_produk'] = $user->produk;
+		
+
 
 		return view ('produk.index', $produk);
 

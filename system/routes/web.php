@@ -48,6 +48,8 @@ Route::get('/login',[AuthController:: class, 'showLogin'])->name('login');
 Route::post('/login',[AuthController:: class, 'loginProcess']);
 Route::get('/logout',[AuthController:: class, 'logout']);
 
+Route::get('test-collection' , [HomeController:: class, 'testcollection']);
+
 
 Route::get('/contact', function() {
 	return view("contact");
