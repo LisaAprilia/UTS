@@ -123,8 +123,47 @@
       </div>
     </div>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <div class="card-header">
+          Alamat
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <label for="" class="control-label">Provinsi</label>
+              <select name="" class="form-control" onchange="gantiProvinsi(this.value)">
+                <option class="">Pilih Provinsi</option>
+                @foreach($list_provinsi as $provinsi)
+                  <option value="{{$provinsi->id}}">{{$provinsi->name}}</option>
+                @endforeach
+              </select>
+            </div>
 
-    
+            <div class="col-md-3">
+              <label for="" class="control-label">Kabupaten</label>
+              <select name="" class="form-control" id="kabupaten" onchange="gantiKabupaten(this.value)">
+                <option class="">Pilih Provinsi Terlebih Dahulu</option>
+              </select>
+            </div><div class="col-md-3">
+              <label for="" class="control-label">Kecamatan/Kota</label>
+              <select name="" class="form-control" id="kecamatan" onchange="gantiKecamatan(this.value)">
+              <option class="">Pilih Kabupaten Terlebih Dahulu</option> 
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="" class="control-label">Desa</label>
+              <select name="" class="form-control" id="desa">
+              <option class="">Pilih Keamatan Terlebih Dahulu</option>  
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="site-section">
       <div class="container">
         <div class="row">
@@ -155,11 +194,11 @@
       </div>
     </div>
   </div>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
+</div> 
+</div>
+</div>
+
 
     <div class="site-section">
       <div class="container">

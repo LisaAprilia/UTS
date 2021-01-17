@@ -49,6 +49,8 @@ Route::post('/login',[AuthController:: class, 'loginProcess']);
 Route::get('/logout',[AuthController:: class, 'logout']);
 
 Route::get('test-collection' , [HomeController:: class, 'testcollection']);
+Route::get('test-ajax' , [HomeController:: class, 'testAjax']);
+
 
 
 Route::get('/contact', function() {

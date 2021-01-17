@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produk;
+use App\Models\Provinsi;
 
 class ProdukController extends Controller {
 
 	function homeIndex(){
 	$produk['list_produk'] = produk::all();
 	$produk['list_produk'] = Produk::Paginate(5);
+		$produk['list_provinsi'] = Provinsi::all();
 	return view ('home', $produk);
 
 	}
