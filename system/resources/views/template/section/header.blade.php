@@ -38,7 +38,7 @@
           <a href="#" class="dropdown-item">
               <i class="fa fa-user"></i> Profile
           </a>
-          <a href="#" class="dropdown-item">
+          <a href="{{url('setting')}}" class="dropdown-item">
               <i class="fa fa-cog"></i> Setting
           </a>
 

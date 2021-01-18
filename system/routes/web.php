@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ArtikelController;
@@ -26,19 +28,42 @@ Route::get('/', function () {
 });
 
 Route::get('/beranda',[HomeController:: class, 'showBeranda']);
+Route::get('/beranda/{status}',[HomeController:: class, 'showBeranda']);
 Route::get ('/index',[UserController:: class, 'homeIndex']);
+
+Route::get('setting', [SettingController::class, 'index']);
+Route::post('setting', [SettingController::class, 'store']);
 
 
 Route::get('/test/{produk}/{hargaMin?}/{hargaMax?}',[HomeController:: class, 'test']);
 
-Route::prefix('admin')->middleware('auth')->group(function(){
+Route::prefix('admin/')->middleware('auth')->group(function(){
     Route::post('produk/filter', [ProdukController:: class, 'filter']);
     Route::post('artikel/filter', [ArtikelController:: class, 'filter']);
     Route::resource('produk', ProdukController:: class);
+     Route::resource('product', ProductController:: class);
     Route::resource('artikel', ArtikelController:: class);
     Route::resource('user', UserController:: class);
     Route::resource('kategori',KategoriController:: class);
 });
+
+// Route::prefix('pembeli')->middleware('auth::pembeli')->group(function(){
+//     Route::post('produk/filter', [ProdukController:: class, 'filter']);
+//     Route::post('artikel/filter', [ArtikelController:: class, 'filter']);
+//     Route::resource('produk', ProdukController:: class);
+//     Route::resource('artikel', ArtikelController:: class);
+//     Route::resource('user', UserController:: class);
+//     Route::resource('kategori',KategoriController:: class);
+// });
+
+// Route::prefix('penjual')->middleware('auth::penjual')->group(function(){
+//     Route::post('produk/filter', [ProdukController:: class, 'filter']);
+//     Route::post('artikel/filter', [ArtikelController:: class, 'filter']);
+//     Route::resource('produk', ProdukController:: class);
+//     Route::resource('artikel', ArtikelController:: class);
+//     Route::resource('user', UserController:: class);
+//     Route::resource('kategori',KategoriController:: class);
+// });
 
 Route::get('/filter',[UserController:: class, 'home']);
 
