@@ -12,7 +12,7 @@ class Product extends Model{
 	
 	protected $table = 'product';
 	protected $primaryKey = 'uuid';
-	protected $incrementing = false;
+	public $incrementing = false;
 
 	protected $casts= [
 		'created_at' => 'datetime',
